@@ -10,16 +10,18 @@ const LAST_UPDATED = "December 2026";
 
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <article className="mx-auto max-w-3xl">
-        <h1 className="font-roboto-slab text-center text-3xl font-bold text-aws-navy sm:text-4xl">
-          Privacy Policy
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Last updated: {LAST_UPDATED}
-        </p>
+    <div className="min-h-screen bg-section-light">
+      <article className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <header className="text-center">
+          <h1 className="font-roboto-slab text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl lg:text-5xl">
+            Privacy Policy
+          </h1>
+          <p className="mt-3 text-base text-muted-foreground">
+            Last updated: {LAST_UPDATED}
+          </p>
+        </header>
 
-        <p className="mt-8 text-foreground">
+        <p className="mt-10 text-lg leading-relaxed text-foreground">
           Amador Web Solutions is a web development and technical services
           agency. This Privacy Policy outlines how we collect, use, disclose,
           and protect your information when you use our website or engage our
@@ -27,9 +29,9 @@ export default function PrivacyPage() {
           this policy.
         </p>
 
-        <div className="mt-10 space-y-10">
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+        <div className="mt-14 space-y-14">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               1. Information We Collect
             </h2>
             <p className="mt-3 text-foreground">
@@ -37,7 +39,7 @@ export default function PrivacyPage() {
               below.
             </p>
 
-            <h3 className="mt-5 font-semibold text-aws-navy">
+            <h3 className="mt-5 font-semibold tracking-tight text-aws-navy">
               1.1 Information You Provide to Us
             </h3>
             <ul className="mt-2 list-inside list-disc space-y-1 text-foreground">
@@ -64,7 +66,7 @@ export default function PrivacyPage() {
               </li>
             </ul>
 
-            <h3 className="mt-5 font-semibold text-aws-navy">
+            <h3 className="mt-5 font-semibold tracking-tight text-aws-navy">
               1.2 Automatically Collected Information
             </h3>
             <p className="mt-2 text-foreground">
@@ -84,7 +86,7 @@ export default function PrivacyPage() {
               technical tools.
             </p>
 
-            <h3 className="mt-5 font-semibold text-aws-navy">
+            <h3 className="mt-5 font-semibold tracking-tight text-aws-navy">
               1.3 Cookies and Tracking Technologies
             </h3>
             <p className="mt-2 text-foreground">
@@ -96,8 +98,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               2. How We Use Your Information
             </h2>
             <p className="mt-3 text-foreground">
@@ -117,8 +119,8 @@ export default function PrivacyPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               3. How We Share Your Information
             </h2>
             <p className="mt-3 text-foreground">
@@ -126,7 +128,7 @@ export default function PrivacyPage() {
               information with trusted third parties as described below.
             </p>
 
-            <h3 className="mt-5 font-semibold text-aws-navy">
+            <h3 className="mt-5 font-semibold tracking-tight text-aws-navy">
               3.1 Service Providers
             </h3>
             <p className="mt-2 text-foreground">
@@ -145,7 +147,7 @@ export default function PrivacyPage() {
               instructions.
             </p>
 
-            <h3 className="mt-5 font-semibold text-aws-navy">
+            <h3 className="mt-5 font-semibold tracking-tight text-aws-navy">
               3.2 Legal Requirements
             </h3>
             <p className="mt-2 text-foreground">
@@ -155,8 +157,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               4. Data Security
             </h2>
             <p className="mt-3 text-foreground">
@@ -169,8 +171,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               5. Data Retention
             </h2>
             <p className="mt-3 text-foreground">
@@ -183,8 +185,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               6. Your Rights
             </h2>
             <p className="mt-3 text-foreground">
@@ -203,8 +205,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               7. Third-Party Websites
             </h2>
             <p className="mt-3 text-foreground">
@@ -215,8 +217,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               8. International Data Transfers
             </h2>
             <p className="mt-3 text-foreground">
@@ -227,8 +229,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               9. Children&apos;s Privacy
             </h2>
             <p className="mt-3 text-foreground">
@@ -239,8 +241,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               10. Changes to This Policy
             </h2>
             <p className="mt-3 text-foreground">
@@ -252,8 +254,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               11. Contact Us
             </h2>
             <p className="mt-3 text-foreground">
@@ -266,7 +268,7 @@ export default function PrivacyPage() {
               Email:{" "}
               <a
                 href="mailto:support@amadorwebsolutions.com"
-                className="text-aws-navy underline hover:no-underline"
+                className="text-aws-navy underline transition-[text-decoration] hover:no-underline"
               >
                 support@amadorwebsolutions.com
               </a>

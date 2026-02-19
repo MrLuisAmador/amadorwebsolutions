@@ -22,7 +22,7 @@ export default async function Blog() {
             {post.publishedDate && (
               <time
                 dateTime={post.publishedDate}
-                className="text-sm text-gray-500"
+                className="text-base text-gray-500"
               >
                 {new Date(post.publishedDate).toLocaleDateString()}
               </time>

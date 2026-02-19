@@ -48,8 +48,8 @@ export function Header() {
   const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-0">
+    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-white/95 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="flex items-center gap-3"
@@ -70,7 +70,11 @@ export function Header() {
           aria-label="Main navigation"
         >
           {NAV_LINKS.map(({ href, label }) => (
-            <Link key={href} href={href} className="font-bold text-aws-navy">
+            <Link
+              key={href}
+              href={href}
+              className="rounded-md px-3 py-2 text-base font-semibold text-aws-navy transition-colors hover:bg-aws-navy/5 hover:text-aws-navy-light"
+            >
               {label}
             </Link>
           ))}
@@ -108,7 +112,7 @@ export function Header() {
             <Link
               key={href}
               href={href}
-              className="rounded-md px-3 py-2.5 font-bold text-aws-navy hover:bg-accent"
+              className="rounded-lg px-4 py-3 font-semibold text-aws-navy transition-colors hover:bg-aws-navy/10"
               onClick={closeMobileMenu}
             >
               {label}

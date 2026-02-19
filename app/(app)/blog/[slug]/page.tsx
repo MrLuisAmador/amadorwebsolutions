@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="container mx-auto max-w-4xl py-8 px-4">
       <header className="mb-8">
         {post.publishedDate && (
-          <time dateTime={post.publishedDate} className="text-sm text-gray-600">
+          <time dateTime={post.publishedDate} className="text-base text-gray-600">
             {new Date(post.publishedDate).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",

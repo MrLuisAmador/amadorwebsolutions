@@ -5,7 +5,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const INPUT_CLASS =
-  "w-full rounded-md border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-aws-navy focus:outline-none focus:ring-2 focus:ring-aws-navy/20";
+  "w-full rounded-xl border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-aws-navy focus:outline-none focus:ring-2 focus:ring-aws-navy/20 transition-colors";
 
 const TEXTAREA_CLASS = `${INPUT_CLASS} min-h-[100px] resize-y`;
 
@@ -67,7 +67,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       <div>
-        <label htmlFor="contact-fullName" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-fullName" className="block text-base font-semibold text-aws-navy">
           Full Name <span className="text-aws-accent">*</span>
         </label>
         <input
@@ -82,7 +82,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-email" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-email" className="block text-base font-semibold text-aws-navy">
           Email <span className="text-aws-accent">*</span>
         </label>
         <input
@@ -94,13 +94,13 @@ export function ContactForm() {
           className={INPUT_CLASS}
           disabled={status === "submitting"}
         />
-        <p className="mt-1.5 text-sm text-muted-foreground">
+        <p className="mt-1.5 text-base text-muted-foreground">
           I reply within 24 hours
         </p>
       </div>
 
       <div>
-        <label htmlFor="contact-website" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-website" className="block text-base font-semibold text-aws-navy">
           Website URL <span className="text-aws-accent">*</span>
         </label>
         <input
@@ -115,7 +115,7 @@ export function ContactForm() {
       </div>
 
       <fieldset>
-        <legend className="block font-semibold text-aws-navy">
+        <legend className="block text-base font-semibold text-aws-navy">
           What are you looking for help with?
         </legend>
         <div className="mt-3 space-y-2">
@@ -123,7 +123,7 @@ export function ContactForm() {
             <label
               key={option}
               className={cn(
-                "flex cursor-pointer items-center gap-3 rounded-md border border-border px-4 py-2.5 transition-colors has-checked:border-aws-navy has-checked:bg-aws-navy/5"
+                "flex cursor-pointer items-center gap-3 rounded-xl border border-border px-4 py-3 transition-colors has-checked:border-aws-navy has-checked:bg-aws-navy/5"
               )}
             >
               <input
@@ -133,14 +133,14 @@ export function ContactForm() {
                 className="size-4 border-border text-aws-navy focus:ring-aws-navy"
                 disabled={status === "submitting"}
               />
-              <span className="text-sm font-medium">{option}</span>
+              <span className="text-base font-medium">{option}</span>
             </label>
           ))}
         </div>
       </fieldset>
 
       <div>
-        <label htmlFor="contact-goal" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-goal" className="block text-base font-semibold text-aws-navy">
           What&apos;s the main goal of this project?
         </label>
         <textarea
@@ -153,7 +153,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-budget" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-budget" className="block text-base font-semibold text-aws-navy">
           Estimated budget <span className="text-aws-accent">*</span>
         </label>
         <select
@@ -172,7 +172,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-start" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-start" className="block text-base font-semibold text-aws-navy">
           When do you want to start?
         </label>
         <select
@@ -190,7 +190,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-details" className="block font-semibold text-aws-navy">
+        <label htmlFor="contact-details" className="block text-base font-semibold text-aws-navy">
           Additional details (optional)
         </label>
         <textarea
@@ -203,19 +203,19 @@ export function ContactForm() {
 
       <Button
         type="submit"
-        className="w-full rounded-md bg-aws-navy py-3 text-white hover:bg-aws-navy-light"
+        className="w-full rounded-full bg-aws-navy py-6 font-semibold text-white shadow-sm transition-colors hover:bg-aws-navy-light"
         disabled={status === "submitting"}
       >
-        {status === "submitting" ? "Sending…" : "Contact"}
+        {status === "submitting" ? "Sending…" : "Send message"}
       </Button>
 
       {status === "success" && (
-        <p className="text-center text-sm text-green-600" role="status">
+        <p className="text-center text-base font-medium text-green-600" role="status">
           Thanks! I&apos;ll get back to you within 24 hours.
         </p>
       )}
       {status === "error" && (
-        <p className="text-center text-sm text-aws-accent" role="alert">
+        <p className="text-center text-base font-medium text-aws-accent" role="alert">
           Something went wrong. Please try again or email us directly.
         </p>
       )}

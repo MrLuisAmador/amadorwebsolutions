@@ -147,43 +147,45 @@ export default function Home() {
       {/* Hero */}
       <section
         id="hero"
-        className="bg-aws-navy px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+        className="relative overflow-hidden bg-aws-hero px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
       >
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_80%,rgba(220,36,62,0.08)_0%,transparent_50%)]"
+          aria-hidden
+        />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-14 lg:flex-row lg:gap-20">
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="font-roboto-slab text-5xl font-bold leading-tight text-white sm:text-6xl">
+            <p className="font-semibold tracking-wide text-aws-icon sm:text-lg">
+              Strategy-driven web development
+            </p>
+            <h1 className="font-roboto-slab mt-2 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Your Website Should Be Your Best Sales Rep
             </h1>
-            <ul className="mt-6 max-w-xl text-lg text-white list-disc list-inside space-y-5">
-              <li>
-                We build fast, accessible, SEO-ready websites connected to a CRM
-                system designed to capture and convert leads — not just display
-                content.
-              </li>
-              <li>
-                Amador Web Solutions engineers websites with technical SEO,
-                accessibility compliance, and automation built in from day one.
-              </li>
-            </ul>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">
+              We build fast, accessible, SEO-ready websites connected to your
+              CRM—engineered to capture and convert leads from day one, not just
+              display content.
+            </p>
             <Button
               variant="accent"
               size="lg"
-              className="mt-8 rounded-full text-lg px-7 py-4"
+              className="mt-10 rounded-full px-8 py-6 text-base font-semibold shadow-cta shadow-cta-hover transition-shadow"
               asChild
             >
               <Link href="/audit">Get a Free Website Audit</Link>
             </Button>
           </div>
-
-          <div className="relative w-full flex-1 max-w-lg aspect-4/3 lg:aspect-auto lg:min-h-[493px]">
-            <Image
-              src={HERO_IMAGE}
-              alt="Partnership and business growth"
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
+          <div className="relative w-full flex-1 max-w-lg shrink-0">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white/5 shadow-2xl ring-1 ring-white/10 lg:aspect-auto lg:min-h-[420px]">
+              <Image
+                src={HERO_IMAGE}
+                alt="Partnership and business growth"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -191,75 +193,84 @@ export default function Home() {
       {/* Strategy */}
       <section
         id="services"
-        className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8 max-w-7xl mx-auto"
+        className="bg-section-light px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
       >
-        <div className="max-w-4xl mx-auto">
-          <h3 className="font-roboto-slab text-center md:text-5xl font-bold text-aws-navy sm:text-4xl">
-            Strategy Built Into the Website – Not Bolted On Later
-          </h3>
-          <p className="mx-auto mt-4 text-lg text-center text-aws-accent">
-            A high-performing website isn’t just about looks. It’s about
-            technical decisions that improve visibility, accessibility, and
-            conversions from day one. We design and engineer every site with
-            your users, search engines, and CRM working together.
-          </p>
-        </div>
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
-          {STRATEGY_FEATURES.map(({ image, title, description }) => (
-            <div key={title} className="text-center">
-              <div className="mx-auto flex items-center justify-center">
-                <Image
-                  src={image}
-                  alt=""
-                  width={108}
-                  height={108}
-                  className=""
-                />
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-roboto-slab text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl lg:text-5xl">
+              Strategy Built In—Not Bolted On Later
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+              A high-performing site is built on technical decisions that
+              improve visibility, accessibility, and conversions from day one.
+              We design every site so users, search engines, and your CRM work
+              together.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {STRATEGY_FEATURES.map(({ image, title, description }) => (
+              <div
+                key={title}
+                className="card-hover group rounded-2xl border border-border/80 bg-white p-6 shadow-sm"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-aws-navy/5 ring-1 ring-aws-navy/10">
+                  <Image
+                    src={image}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="font-roboto-slab mt-5 text-lg font-semibold text-aws-navy">
+                  {title}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
               </div>
-              <h3 className="font-roboto-slab mt-4 font-semibold text-aws-navy text-xl">
-                {title}
-              </h3>
-              <p className="mt-2 text-aws-accent">{description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Leads Conversion – illustration left, text right */}
-      <section className="bg-aws-navy px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2.5 lg:flex-row">
-          <div className="relative w-full flex-1 aspect-4/3">
-            <Image
-              src={LEADS_IMAGE}
-              alt="Data and conversion focus"
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+      {/* Leads Conversion */}
+      <section className="relative bg-aws-gradient px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 lg:flex-row lg:gap-20">
+          <div className="relative w-full flex-1 overflow-hidden rounded-2xl ring-1 ring-white/10">
+            <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-[360px]">
+              <Image
+                src={LEADS_IMAGE}
+                alt="Data and conversion focus"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="font-roboto-slab uppercase font-normal text-white text-xl mb-5">
+            <p className="text-base font-semibold uppercase tracking-widest text-aws-icon">
               Enhance Engagement
-            </h2>
-            <h3 className="font-roboto-slab font-bold text-white text-5xl mb-5">
+            </p>
+            <h2 className="font-roboto-slab mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Turn Visitors into Leads That Convert
-            </h3>
-            <p className="mb-10 text-white text-lg">
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-white/90">
               Your website isn’t just traffic—it’s a lead-generating engine. We
               help you capture, engage, and convert visitors into actionable
-              opportunities for your business.
+              opportunities.
             </p>
-            <h4 className="font-roboto-slab font-bold text-white text-xl">
-              Data-Driven Engagement that Works
-            </h4>
-            <ul className="mt-3 space-y-2 text-lg">
+            <p className="font-roboto-slab mt-8 text-lg font-semibold text-white">
+              Data-Driven Engagement
+            </p>
+            <ul className="mt-4 space-y-3">
               {CONVERSION_BULLETS.map((bullet) => (
                 <li
                   key={bullet}
-                  className="flex items-center gap-2 text-white/90"
+                  className="flex items-start gap-3 text-white/90"
                 >
-                  <span className="size-2 rounded-full bg-aws-accent" />
-                  {bullet}
+                  <span className="mt-1.5 size-2 shrink-0 rounded-full bg-aws-accent" />
+                  <span className="text-left">{bullet}</span>
                 </li>
               ))}
             </ul>
@@ -267,166 +278,178 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scale Smarter – text left, illustration right */}
-      <section className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
+      {/* Scale Smarter */}
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 lg:flex-row lg:gap-20">
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="font-roboto-slab text-3xl font-bold text-aws-navy sm:text-4xl">
+            <h2 className="font-roboto-slab text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl">
               Scale Smarter, Connect Faster
             </h2>
-            <p className="mt-6 text-muted-foreground">
-              Your website and CRM should do more than just exist—they should
-              capture leads, track performance, and adapt as your business
-              evolves. We build systems that integrate data, optimize
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Your website and CRM should capture leads, track performance, and
+              adapt as you grow. We build systems that integrate data, optimize
               engagement, and fuel scalable growth.
             </p>
-            <p className="mt-6 font-semibold text-aws-navy">
+            <p className="font-roboto-slab mt-8 text-lg font-semibold text-aws-navy">
               Seamless Data & Integration
             </p>
-            <p>
-              Connect your website with analytics tools, tracking systems, and
-              CRM workflows to get an unified view of your leads and
-              performance.
+            <p className="mt-2 text-muted-foreground">
+              Connect your website with analytics, tracking, and CRM workflows
+              for a unified view of leads and performance.
             </p>
-            <ul className="mt-3 space-y-2 text-lg">
+            <ul className="mt-5 space-y-3">
               {SCALE_BULLETS.map((bullet) => (
                 <li
                   key={bullet}
-                  className="flex items-center gap-2 text-muted-foreground"
+                  className="flex items-start gap-3 text-muted-foreground"
                 >
-                  <span className="size-2 rounded-full bg-aws-accent" />
-                  {bullet}
+                  <span className="mt-1.5 size-2 shrink-0 rounded-full bg-aws-accent" />
+                  <span>{bullet}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative w-full flex-1 max-w-lg aspect-[4/3] lg:min-h-[320px]">
-            <Image
-              src={SCALE_IMAGE}
-              alt="Team collaboration and integrations"
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+          <div className="relative w-full flex-1 max-w-lg overflow-hidden rounded-2xl border border-border/80 shadow-lg">
+            <div className="relative aspect-4/3 lg:min-h-[320px]">
+              <Image
+                src={SCALE_IMAGE}
+                alt="Team collaboration and integrations"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Social Media */}
-      <section className="bg-aws-navy px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section className="bg-aws-gradient px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-roboto-slab text-center text-3xl font-bold text-white sm:text-4xl">
-            Amplify Your Brand with Social Media Power
+          <h2 className="font-roboto-slab text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Amplify Your Brand with Social Media
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-white/90">
-            Social media is more than just posting—it's about creating
-            meaningful connections, building trust, and driving real engagement.
-            With the right strategy, your brand can reach the right audience,
-            spark conversations, and convert followers into loyal customers.
-            Let’s take your social presence to the next level!
+          <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-white/90">
+            Create meaningful connections, build trust, and drive real
+            engagement. With the right strategy, your brand can reach the right
+            audience and convert followers into loyal customers.
           </p>
-          <div className="mt-16 grid gap-8 lg:grid-cols-2">
-            <div className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-              <h3 className="font-roboto-slab font-semibold text-white">
+          <div className="mt-16 grid gap-6 lg:grid-cols-2">
+            <div className="card-hover rounded-2xl border border-white/10 bg-white p-8 backdrop-blur-sm">
+              <h3 className="font-roboto-slab text-lg font-semibold text-aws-navy">
                 Maximize Your Impact with Social Media
               </h3>
-              <p className="mt-2 text-sm text-white/80">
-                Engage, connect, and grow your audience with powerful social
-                media strategies. Leverage data-driven insights and creative
-                content to build a loyal community, increase brand awareness,
-                and drive real conversions.
+              <p className="mt-3 text-base leading-relaxed text-black">
+                Engage, connect, and grow your audience with data-driven
+                strategies and creative content—building a loyal community and
+                driving real conversions.
               </p>
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 flex justify-center">
                 <Image
-                  src="/images/tmpz30zxx68.webp"
-                  alt="Social Media"
-                  width={100}
-                  height={100}
+                  src="/images/tmp7ygor25c.webp"
+                  alt=""
+                  width={430}
+                  height={287}
+                  className="opacity-90"
                 />
               </div>
             </div>
-            <div className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-              <div className="mt-6 space-y-4">
+            <div className="card-hover rounded-2xl border border-white/10 bg-white p-8 backdrop-blur-sm">
+              <div className="mb-4 flex justify-center">
                 <Image
-                  src="/images/tmpz30zxx68.webp"
-                  alt="Social Media"
-                  width={100}
-                  height={100}
+                  src="/images/tmpxwp8bu0r.webp"
+                  alt=""
+                  width={430}
+                  height={287}
+                  className="opacity-90"
                 />
               </div>
-              <h3 className="font-roboto-slab font-semibold text-white">
+              <h3 className="font-roboto-slab text-lg font-semibold text-aws-navy">
                 Grow Your Brand, One Post at a Time
               </h3>
-              <p className="mt-4 text-sm text-white/80">
-                Social media is the key to unlocking brand visibility and
-                engagement. With the right content and strategy, you can turn
-                followers into customers and conversations into conversions.
+              <p className="mt-3 text-base leading-relaxed text-black">
+                Unlock brand visibility and engagement. With the right content
+                and strategy, turn followers into customers and conversations
+                into conversions.
               </p>
             </div>
           </div>
-          <div className="mt-16 flex flex-wrap justify-center gap-12 text-white">
+          <div className="mt-20 grid grid-cols-1 gap-10 sm:grid-cols-3">
             <div className="text-center">
-              <p className="text-3xl font-bold">89k</p>
-              <p className="text-sm text-white/80">
-                Satisfied customers leveraging data-driven marketing strategies.
+              <p className="font-roboto-slab text-4xl font-bold text-white">
+                89k
+              </p>
+              <p className="mt-1 text-base text-white/75">
+                Satisfied customers with data-driven strategies
               </p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold">76%</p>
-              <p className="text-sm text-white/80">
-                Increase in engagement through AI-powered insights.
+              <p className="font-roboto-slab text-4xl font-bold text-aws-icon">
+                76%
+              </p>
+              <p className="mt-1 text-base text-white/75">
+                Increase in engagement with targeted insights
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
-              <p className="flex items-center gap-1 text-3xl font-bold">
+              <p className="flex items-center gap-1 font-roboto-slab text-4xl font-bold text-white">
                 4.93
-                <Star className="size-6 fill-aws-icon text-aws-icon" />
+                <Star
+                  className="size-7 fill-aws-icon text-aws-icon"
+                  aria-hidden
+                />
               </p>
-              <p className="text-sm text-white/80">
-                Average customer rating, proving our commitment to excellence.
+              <p className="mt-1 text-base text-white/75">
+                Average customer rating
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Work Smarter, Grow Faster – illustration left, text right */}
-      <section className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
-          <div className="relative w-full flex-1 max-w-lg aspect-[4/3] lg:min-h-[320px]">
-            <Image
-              src={GROWTH_IMAGE}
-              alt="Growth and data-driven strategy"
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+      {/* Work Smarter, Grow Faster */}
+      <section className="bg-section-light px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 lg:flex-row lg:gap-20">
+          <div className="relative w-full flex-1 max-w-lg overflow-hidden rounded-2xl border border-border/80 shadow-lg">
+            <div className="relative aspect-4/3 lg:min-h-[320px]">
+              <Image
+                src={GROWTH_IMAGE}
+                alt="Growth and data-driven strategy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="font-roboto-slab text-3xl font-bold text-aws-navy sm:text-4xl">
+            <h2 className="font-roboto-slab text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl">
               Work Smarter, Grow Faster
             </h2>
-            <p className="mt-6 text-muted-foreground">
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Leverage technical SEO, accessible design, and CRM-driven
-              automation to streamline your website’s workflow and capture more
-              leads. With real-time insights and integrated tracking, managing
-              and growing your business has never been easier.
+              automation to streamline your workflow and capture more leads.
+              Real-time insights and integrated tracking make growth easier.
             </p>
-            <p className="mt-6 font-semibold text-aws-navy">
+            <p className="font-roboto-slab mt-8 text-lg font-semibold text-aws-navy">
               Unlock Every Feature, No Limits
             </p>
-            <ul className="mt-3 space-y-2 text-lg">
+            <ul className="mt-5 space-y-3">
               {GROWTH_BULLETS.map((bullet) => (
                 <li
                   key={bullet}
-                  className="flex items-center gap-2 text-muted-foreground"
+                  className="flex items-start gap-3 text-muted-foreground"
                 >
-                  <span className="size-2 rounded-full bg-aws-accent" />
-                  {bullet}
+                  <span className="mt-1.5 size-2 shrink-0 rounded-full bg-aws-accent" />
+                  <span>{bullet}</span>
                 </li>
               ))}
             </ul>
-            <Button variant="accent" className="mt-8" asChild>
+            <Button
+              variant="accent"
+              size="lg"
+              className="mt-8 rounded-full px-6"
+              asChild
+            >
               <Link href="/blog">Learn More</Link>
             </Button>
           </div>
@@ -434,31 +457,31 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-aws-navy px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section className="bg-aws-gradient px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-roboto-slab text-center text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-roboto-slab text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
             What Our Clients Say
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-white/90">
-            Our websites and CRM-integrated solutions help businesses capture
-            leads, optimize performance, and grow efficiently. But don’t just
-            take our word for it—hear directly from the clients we’ve helped
-            succeed!
+          <p className="mx-auto mt-5 max-w-2xl text-center text-white/90">
+            Our websites and CRM solutions help businesses capture leads and
+            grow. Hear from the clients we’ve helped succeed.
           </p>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TESTIMONIALS.map(({ quote, name, title }) => (
               <div
                 key={name}
-                className="rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
+                className="card-hover rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
               >
-                <p className="text-white/95">{quote}</p>
+                <p className="text-base leading-relaxed text-white/95">
+                  &ldquo;{quote}&rdquo;
+                </p>
                 <div className="mt-6 flex items-center gap-4">
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-aws-navy-light text-lg font-semibold text-white">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-aws-navy-light font-semibold text-white ring-2 ring-white/20">
                     {name.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-medium text-white">{name}</p>
-                    <p className="text-sm text-white/70">{title}</p>
+                    <p className="font-semibold text-white">{name}</p>
+                    <p className="text-base text-white/70">{title}</p>
                   </div>
                 </div>
               </div>
@@ -470,34 +493,32 @@ export default function Home() {
       {/* FAQ */}
       <section
         id="about"
-        className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+        className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
       >
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-roboto-slab text-center text-3xl font-bold text-aws-navy sm:text-4xl">
+          <h2 className="font-roboto-slab text-center text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl">
             Frequently Asked Questions
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-aws-accent">
-            We understand you may have questions before starting your website or
-            lead-generation project. Here are answers to some of the most common
-            questions about our services, audits, and technical solutions.
+          <p className="mx-auto mt-5 max-w-2xl text-center text-muted-foreground">
+            Answers to common questions about our services, audits, and
+            technical solutions.
           </p>
-          <Accordion type="single" className="mt-12 space-y-2">
+          <Accordion type="single" className="mt-12 space-y-3">
             {FAQ_ITEMS.map(({ q, a }, i) => (
-              <AccordionItem key={q} value={`faq-${i}`}>
-                <div className="overflow-hidden rounded-lg border border-aws-navy">
-                  <AccordionTrigger
-                    value={`faq-${i}`}
-                    className="w-full bg-aws-navy px-5 py-4 text-left text-white hover:bg-aws-navy-light [&>span]:text-white"
-                  >
-                    {q}
-                  </AccordionTrigger>
-                  <AccordionContent
-                    value={`faq-${i}`}
-                    className="border-t border-aws-navy bg-white px-5 pb-4 pt-3"
-                  >
-                    <p className="text-muted-foreground">{a}</p>
-                  </AccordionContent>
-                </div>
+              <AccordionItem
+                key={q}
+                value={`faq-${i}`}
+                className="rounded-xl border border-border bg-muted/30 px-4 transition-colors hover:bg-muted/50"
+              >
+                <AccordionTrigger
+                  value={`faq-${i}`}
+                  className="py-5 text-left font-semibold text-aws-navy hover:no-underline [&[data-state=open]>span]:rotate-180"
+                >
+                  {q}
+                </AccordionTrigger>
+                <AccordionContent value={`faq-${i}`} className="pb-5 pt-0">
+                  <p className="text-muted-foreground">{a}</p>
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

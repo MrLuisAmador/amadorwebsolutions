@@ -5,7 +5,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const INPUT_CLASS =
-  "w-full rounded-md border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-aws-navy focus:outline-none focus:ring-2 focus:ring-aws-navy/20";
+  "w-full rounded-xl border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-aws-navy focus:outline-none focus:ring-2 focus:ring-aws-navy/20 transition-colors";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -43,7 +43,7 @@ export function AuditForm({ className }: { className?: string }) {
       noValidate
     >
       <div>
-        <label htmlFor="audit-email" className="block font-semibold text-aws-navy">
+        <label htmlFor="audit-email" className="block text-base font-semibold text-aws-navy">
           Email <span className="text-aws-accent">*</span>
         </label>
         <input
@@ -58,7 +58,7 @@ export function AuditForm({ className }: { className?: string }) {
       </div>
 
       <div>
-        <label htmlFor="audit-website" className="block font-semibold text-aws-navy">
+        <label htmlFor="audit-website" className="block text-base font-semibold text-aws-navy">
           Website <span className="text-aws-accent">*</span>
         </label>
         <input
@@ -73,7 +73,7 @@ export function AuditForm({ className }: { className?: string }) {
       </div>
 
       <div>
-        <label htmlFor="audit-business" className="block font-semibold text-aws-navy">
+        <label htmlFor="audit-business" className="block text-base font-semibold text-aws-navy">
           Business
         </label>
         <input
@@ -87,7 +87,7 @@ export function AuditForm({ className }: { className?: string }) {
       </div>
 
       <div>
-        <label htmlFor="audit-name" className="block font-semibold text-aws-navy">
+        <label htmlFor="audit-name" className="block text-base font-semibold text-aws-navy">
           Full Name
         </label>
         <input
@@ -101,7 +101,7 @@ export function AuditForm({ className }: { className?: string }) {
       </div>
 
       <div>
-        <label htmlFor="audit-phone" className="block font-semibold text-aws-navy">
+        <label htmlFor="audit-phone" className="block text-base font-semibold text-aws-navy">
           Phone
         </label>
         <input
@@ -116,19 +116,19 @@ export function AuditForm({ className }: { className?: string }) {
 
       <Button
         type="submit"
-        className="w-full rounded-md bg-aws-navy py-3 text-white hover:bg-aws-navy-light"
+        className="w-full rounded-full bg-aws-navy py-6 font-semibold text-white shadow-sm transition-colors hover:bg-aws-navy-light"
         disabled={status === "submitting"}
       >
-        {status === "submitting" ? "Submitting…" : "Submit Request to Audit"}
+        {status === "submitting" ? "Submitting…" : "Request free audit"}
       </Button>
 
       {status === "success" && (
-        <p className="text-center text-sm text-green-600" role="status">
+        <p className="text-center text-base font-medium text-green-600" role="status">
           Thank you. We&apos;ll be in touch soon to schedule your audit.
         </p>
       )}
       {status === "error" && (
-        <p className="text-center text-sm text-aws-accent" role="alert">
+        <p className="text-center text-base font-medium text-aws-accent" role="alert">
           Something went wrong. Please try again or email us directly.
         </p>
       )}

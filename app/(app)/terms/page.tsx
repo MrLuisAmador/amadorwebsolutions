@@ -10,25 +10,27 @@ const LAST_UPDATED = "December 2025";
 
 export default function TermsPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <article className="mx-auto max-w-3xl">
-        <h1 className="font-roboto-slab text-center text-3xl font-bold text-aws-navy sm:text-4xl">
-          Terms of Services
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Last updated: {LAST_UPDATED}
-        </p>
+    <div className="min-h-screen bg-section-light">
+      <article className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <header className="text-center">
+          <h1 className="font-roboto-slab text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl lg:text-5xl">
+            Terms of Services
+          </h1>
+          <p className="mt-3 text-base text-muted-foreground">
+            Last updated: {LAST_UPDATED}
+          </p>
+        </header>
 
-        <p className="mt-8 text-foreground">
+        <p className="mt-10 text-lg leading-relaxed text-foreground">
           Welcome to Amador Web Solutions. These Terms of Services (&quot;Terms&quot;)
           govern your use of our website and the services we provide. By engaging
           our services or using this site, you agree to these Terms. Please read
           them carefully.
         </p>
 
-        <div className="mt-10 space-y-10">
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+        <div className="mt-14 space-y-14">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               1. Services Provided
             </h2>
             <p className="mt-3 text-foreground">
@@ -44,8 +46,8 @@ export default function TermsPage() {
             </ul>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               2. Client Responsibilities
             </h2>
             <p className="mt-3 text-foreground">
@@ -61,8 +63,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               3. Payments
             </h2>
             <p className="mt-3 text-foreground">
@@ -75,8 +77,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               4. Confidentiality
             </h2>
             <p className="mt-3 text-foreground">
@@ -88,8 +90,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               5. Project Timelines
             </h2>
             <p className="mt-3 text-foreground">
@@ -101,17 +103,17 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               6. Work Product and Property
             </h2>
-            <h3 className="mt-4 font-semibold text-aws-navy">6.1 Client Ownership</h3>
+            <h3 className="mt-4 font-semibold tracking-tight text-aws-navy">6.1 Client Ownership</h3>
             <p className="mt-2 text-foreground">
               Upon full payment, you own the final work product specifically
               created for your project (e.g., custom designs, copy, and
               project-specific code delivered as part of the agreed scope).
             </p>
-            <h3 className="mt-4 font-semibold text-aws-navy">6.2 Developer Ownership</h3>
+            <h3 className="mt-4 font-semibold tracking-tight text-aws-navy">6.2 Developer Ownership</h3>
             <p className="mt-2 text-foreground">
               Amador Web Solutions retains all rights in its tools, methodologies,
               proprietary code, templates, and reusable components. We may use
@@ -121,8 +123,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               7. Third-Party Services
             </h2>
             <p className="mt-3 text-foreground">
@@ -134,8 +136,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               8. Website Hosting &amp; Platforms
             </h2>
             <p className="mt-3 text-foreground">
@@ -147,8 +149,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               9. Design Revisions
             </h2>
             <p className="mt-3 text-foreground">
@@ -160,8 +162,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               10. Warranty
             </h2>
             <p className="mt-3 text-foreground">
@@ -175,8 +177,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               11. Confidentiality (Mutual)
             </h2>
             <p className="mt-3 text-foreground">
@@ -189,8 +191,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               12. Limitation of Liability
             </h2>
             <p className="mt-3 text-foreground">
@@ -204,8 +206,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               13. Termination
             </h2>
             <p className="mt-3 text-foreground">
@@ -220,8 +222,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               14. Changes to Terms
             </h2>
             <p className="mt-3 text-foreground">
@@ -233,8 +235,8 @@ export default function TermsPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="font-roboto-slab text-lg font-bold text-aws-navy">
+          <section className="rounded-2xl border border-border/60 bg-white p-8 shadow-sm">
+            <h2 className="font-roboto-slab text-lg font-bold tracking-tight text-aws-navy">
               15. Contact Information
             </h2>
             <p className="mt-3 text-foreground">
@@ -246,7 +248,7 @@ export default function TermsPage() {
               Email:{" "}
               <a
                 href="mailto:support@amadorwebsolutions.com"
-                className="text-aws-navy underline hover:no-underline"
+                className="text-aws-navy underline transition-[text-decoration] hover:no-underline"
               >
                 support@amadorwebsolutions.com
               </a>

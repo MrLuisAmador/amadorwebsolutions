@@ -17,39 +17,51 @@ const HOW_IT_WORKS = [
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <h1 className="font-roboto-slab text-center text-3xl font-bold text-aws-navy sm:text-4xl">
-        Let&apos;s Improve Your Website
-      </h1>
+    <div className="min-h-screen bg-section-light">
+      <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <h1 className="font-roboto-slab text-3xl font-bold tracking-tight text-aws-navy sm:text-4xl lg:text-5xl">
+            Let&apos;s Improve Your Website
+          </h1>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Share your project details and we&apos;ll send you a tailored proposal. Technical SEO, accessibility, development, and platform administration.
+          </p>
+        </div>
 
-      <div className="mx-auto mt-12 grid max-w-4xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-        <section aria-labelledby="how-it-works-heading">
-          <h2
-            id="how-it-works-heading"
-            className="font-roboto-slab text-xl font-semibold text-aws-navy"
+        <div className="mx-auto mt-16 grid max-w-5xl gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+          <section
+            aria-labelledby="how-it-works-heading"
+            className="rounded-2xl border border-border/80 bg-white p-8 shadow-sm"
           >
-            How this works
-          </h2>
-          <ul className="mt-4 space-y-3">
-            {HOW_IT_WORKS.map((step) => (
-              <li
-                key={step}
-                className="flex items-center gap-3 text-foreground"
-              >
-                <span
-                  className="flex size-6 shrink-0 items-center justify-center rounded-full bg-aws-accent text-white"
-                  aria-hidden
+            <h2
+              id="how-it-works-heading"
+              className="font-roboto-slab text-lg font-semibold tracking-tight text-aws-navy"
+            >
+              How this works
+            </h2>
+            <ul className="mt-6 space-y-4">
+              {HOW_IT_WORKS.map((step) => (
+                <li
+                  key={step}
+                  className="flex items-center gap-4 text-foreground"
                 >
-                  <Check className="size-3.5" />
-                </span>
-                {step}
-              </li>
-            ))}
-          </ul>
-        </section>
+                  <span
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full bg-aws-accent text-white"
+                    aria-hidden
+                  >
+                    <Check className="size-4" />
+                  </span>
+                  <span className="font-medium">{step}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <ContactForm />
-      </div>
+          <div className="rounded-2xl border border-border/80 bg-white p-8 shadow-sm sm:p-10">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
