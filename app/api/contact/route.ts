@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendContactNotification } from "@/lib/email";
 
 export type ContactPayload = {
   fullName: string;
@@ -23,7 +24,22 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO: persist to DB, send notification email, or forward to CRM
+    try {
+      const result = await sendContactNotification(body);
+      if (!result.sent) {
+        console.error("Contact email failed:", result.reason);
+        return NextResponse.json(
+          { error: "Could not send message. Please try again later." },
+          { status: 503 }
+        );
+      }
+    } catch (err) {
+      console.error("Contact email error:", err);
+      return NextResponse.json(
+        { error: "Could not send message. Please try again later." },
+        { status: 503 }
+      );
+    }
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
