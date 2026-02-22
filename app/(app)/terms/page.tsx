@@ -1,3 +1,4 @@
+import { TERMS_LAST_UPDATED } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,8 +6,6 @@ export const metadata: Metadata = {
   description:
     "Terms of Services governing the use of Amador Web Solutions website and services. Services provided, client responsibilities, payments, and more.",
 };
-
-const LAST_UPDATED = "December 2025";
 
 export default function TermsPage() {
   return (
@@ -17,7 +16,7 @@ export default function TermsPage() {
             Terms of Services
           </h1>
           <p className="mt-3 text-base text-muted-foreground">
-            Last updated: {LAST_UPDATED}
+            Last updated: {TERMS_LAST_UPDATED}
           </p>
         </header>
 

@@ -1,4 +1,19 @@
 import {
+  CONVERSION_BULLETS,
+  FAQ_ITEMS,
+  GROWTH_BULLETS,
+  GROWTH_IMAGE,
+  HERO_IMAGE,
+  LEADS_IMAGE,
+  SCALE_BULLETS,
+  SCALE_IMAGE,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+  STRATEGY_FEATURES,
+  TESTIMONIALS,
+} from "@/lib/constants";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -10,23 +25,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 
-const siteUrl = "https://www.amadorwebsolutions.com/";
-const siteTitle = "Amador Web Solutions";
-const siteDescription =
-  "Your website should be your best sales rep. We build strategy-driven websites that convert visitors into leads.";
-
 export const metadata: Metadata = {
-  title: `Home | ${siteTitle}`,
-  description: siteDescription,
+  title: `Home | ${SITE_TITLE}`,
+  description: SITE_DESCRIPTION,
   keywords: ["web development", "marketing", "SEO", "conversion", "web design"],
   alternates: {
-    canonical: siteUrl,
+    canonical: SITE_URL,
   },
   openGraph: {
-    title: siteTitle,
-    description: siteDescription,
-    url: siteUrl,
-    siteName: siteTitle,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_TITLE,
     locale: "en_US",
     type: "website",
   },
@@ -34,112 +44,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
 };
-
-const STRATEGY_FEATURES = [
-  {
-    image: "/images/tmpkzoqwnr6.webp",
-    title: "Technical Insight",
-    description:
-      "We audit your site’s code, structure, and performance to uncover SEO, accessibility, and conversion issues that directly impact growth.",
-  },
-  {
-    image: "/images/tmp1k7k4i1f.webp",
-    title: "Accessibility-First Development",
-    description:
-      "We build and fix websites to meet accessibility best practices, improving usability for all users while reducing legal and compliance risk.",
-  },
-  {
-    image: "/images/tmpf7_dz92j.webp",
-    title: "SEO-Ready Architecture",
-    description:
-      "From clean code to proper metadata and site structure, we engineer websites that search engines can crawl, understand, and rank effectively.",
-  },
-  {
-    image: "/images/tmpz27lt39w.webp",
-    title: "Conversion & CRM Integration",
-    description:
-      "We connect your website directly to a CRM platform to capture leads, track user behavior, and automate follow-ups — so no opportunity gets missed.",
-  },
-];
-
-const CONVERSION_BULLETS = [
-  "Technical SEO & Performance – Optimize your site for search engines and fast, smooth experiences",
-  "Accessible & Engaging Design – Build trust and usability for all users",
-  "CRM-Integrated Lead Capture – Automatically track, nurture, and convert leads",
-];
-
-const SCALE_BULLETS = [
-  "Integrated Tracking & Analytics – Capture every lead and conversion in real time",
-  "Technical Optimization – Clean, maintainable code for speed, reliability, and SEO",
-  "CRM-Connected Growth – Automate follow-ups and scale lead management effortlessly",
-];
-
-const GROWTH_BULLETS = [
-  "Advanced Analytics – Track website performance, engagement, and lead conversions effortlessly",
-  "Seamless Integrations – Connect your website with tracking systems, CRM platforms, and other tools for a unified experience",
-  "Automated Lead Capture & Follow-Up – Streamline processes and ensure no opportunity is missed.",
-];
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "If you’re looking for someone who knows what they’re doing and actually listens? Yeah… Amador Web Solutions is that agency.. Highly recommend — he leveled up my whole website & funnel.",
-    name: "Angelica M Lazo",
-    title: "CEO of She Is On Demand",
-  },
-  {
-    quote:
-      "Extremely knowledgeable in his craft and helped my business scale. Highly recommend to use for your business",
-    name: "Joseph Asante",
-    title: "CEO of Cardinal Point Aviation",
-  },
-  {
-    quote:
-      "This software has been a game-changer for our operations. The automated workflows and real-time data tracking have saved us hours of manual work and streamlined our processes. Since using it, we’ve grown our revenue by 45% in just three months.",
-    name: "Adam Asbury",
-    title: "President of Love Pop Miami",
-  },
-];
-
-const FAQ_ITEMS = [
-  {
-    q: "What platforms do you build websites on?",
-    a: "We build websites on modern platforms and frameworks. Depending on your needs, we offer fast, template-based builds for cost efficiency or fully custom websites and web applications for flexibility and performance.",
-  },
-  {
-    q: "Do you handle ongoing website maintenance?",
-    a: "Yes! We provide maintenance, updates, code changes, and design-to-code enhancements to keep your website secure, fast, and fully optimized.",
-  },
-  {
-    q: "Can you help my site rank higher in search engines?",
-    a: "Absolutely. We perform technical SEO audits and implement improvements to your site’s code, metadata, and structure to improve visibility and attract qualified traffic.",
-  },
-  {
-    q: "What is an accessibility audit, and why is it important?",
-    a: "An accessibility audit ensures your website is usable by all visitors, including those with disabilities. It’s essential for compliance, improving user experience, and expanding your potential audience.",
-  },
-  {
-    q: "How does CRM integration work?",
-    a: "We connect your website to a CRM platform that captures leads, tracks user behavior, and automates follow-ups, ensuring no opportunity is missed and your marketing is always actionable.",
-  },
-  {
-    q: "How long does it take to build a website?",
-    a: "Timeline depends on the complexity. Template-based builds can take a few weeks, while fully custom websites or web apps take longer to ensure quality, speed, and scalability.",
-  },
-  {
-    q: "Can I choose what type of audit I want?",
-    a: "Yes! When you request a free website audit, you can select either an SEO audit, an accessibility audit, or both, depending on what you want to prioritize first",
-  },
-  {
-    q: "Do you provide analytics and performance tracking?",
-    a: "Yes. We integrate tools to track website performance, user engagement, and lead conversions so you can make data-driven decisions and optimize your growth.",
-  },
-];
-
-const HERO_IMAGE = "/images/tmpz577vvgf.webp";
-const LEADS_IMAGE = "/images/tmp71kqxegx.webp";
-const SCALE_IMAGE = "/images/tmpaaghhrf1.webp";
-const GROWTH_IMAGE = "/images/tmpq8k9lgha.webp";
 
 export default function Home() {
   return (

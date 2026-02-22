@@ -3,16 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useCallback } from "react";
+import { MOBILE_MENU_ID, NAV_LINKS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/contact", label: "Contact Us" },
-] as const;
-
-const MOBILE_MENU_ID = "header-mobile-nav";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (

@@ -1,11 +1,9 @@
 "use client";
 
+import { INPUT_CLASS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-
-const INPUT_CLASS =
-  "w-full rounded-xl border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-aws-navy focus:outline-none focus:ring-2 focus:ring-aws-navy/20 transition-colors";
 
 type Status = "idle" | "submitting" | "success" | "error";
 

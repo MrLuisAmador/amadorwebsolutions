@@ -1,39 +1,15 @@
 "use client";
 
+import {
+  BUDGET_OPTIONS,
+  HELP_OPTIONS,
+  INPUT_CLASS,
+  START_OPTIONS,
+  TEXTAREA_CLASS,
+} from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-
-const INPUT_CLASS =
-  "w-full rounded-xl border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-aws-navy focus:outline-none focus:ring-2 focus:ring-aws-navy/20 transition-colors";
-
-const TEXTAREA_CLASS = `${INPUT_CLASS} min-h-[100px] resize-y`;
-
-const HELP_OPTIONS = [
-  "Technical SEO",
-  "Technical Accessibility",
-  "Website Development",
-  "Platform Administration",
-  "Website Maintenance",
-  "Something else",
-] as const;
-
-const BUDGET_OPTIONS = [
-  { value: "", label: "Select budget range" },
-  { value: "under-5k", label: "Under $5,000" },
-  { value: "5k-15k", label: "$5,000 – $15,000" },
-  { value: "15k-30k", label: "$15,000 – $30,000" },
-  { value: "30k-plus", label: "$30,000+" },
-  { value: "unsure", label: "Not sure yet" },
-] as const;
-
-const START_OPTIONS = [
-  { value: "", label: "Select timeline" },
-  { value: "asap", label: "ASAP" },
-  { value: "1-month", label: "Within 1 month" },
-  { value: "3-months", label: "Within 3 months" },
-  { value: "exploring", label: "Just exploring" },
-] as const;
 
 type Status = "idle" | "submitting" | "success" | "error";
 

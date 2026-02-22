@@ -1,3 +1,4 @@
+import { HOW_IT_WORKS } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { ContactForm } from "./ContactForm";
@@ -7,13 +8,6 @@ export const metadata: Metadata = {
   description:
     "Let's improve your website. Submit your project details and get a proposal. Technical SEO, accessibility, development, and platform administration.",
 };
-
-const HOW_IT_WORKS = [
-  "You submit the form",
-  "I review your request",
-  "You get a proposal",
-  "If it's a fit, we start",
-] as const;
 
 export default function ContactPage() {
   return (

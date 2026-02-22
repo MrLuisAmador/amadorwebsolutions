@@ -1,51 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
-
-const COMPANY_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/contact", label: "Contact Us" },
-] as const;
-
-const SERVICES = [
-  { href: "/#services", label: "Technical SEO" },
-  { href: "/#services", label: "Technical Accessibility" },
-  { href: "/#services", label: "Website Development" },
-  { href: "/#services", label: "Platform Administration" },
-] as const;
-
-const LEGAL_LINKS = [
-  { href: "/terms", label: "Terms of Services" },
-  { href: "/privacy", label: "Privacy Policy" },
-] as const;
-
-const SOCIAL_LINKS = [
-  {
-    href: "https://www.facebook.com/amadorwebsolutions",
-    icon: Facebook,
-    label: "Facebook",
-  },
-  {
-    href: "https://www.instagram.com/amadorwebsolutions",
-    icon: Instagram,
-    label: "Instagram",
-  },
-  { href: "https://x.com/amadorWS", icon: Twitter, label: "X" },
-  {
-    href: "https://www.linkedin.com/company/amador-web-solutions",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://www.youtube.com/@amadorwebsolution",
-    icon: Youtube,
-    label: "YouTube",
-  },
-] as const;
-
-const PHONE = "(813) 702-3172";
-const EMAIL = "amadorwebsolutions@gmail.com";
+import {
+  EMAIL,
+  FOOTER_SERVICES,
+  LEGAL_LINKS,
+  NAV_LINKS,
+  PHONE,
+  SOCIAL_LINKS,
+} from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -73,7 +35,7 @@ export function Footer() {
               Company
             </h4>
             <ul className="mt-4 space-y-2.5">
-              {COMPANY_LINKS.map(({ href, label }) => (
+              {NAV_LINKS.map(({ href, label }) => (
                 <li key={label}>
                   <Link
                     href={href}
@@ -91,7 +53,7 @@ export function Footer() {
               Services
             </h4>
             <ul className="mt-4 space-y-2.5">
-              {SERVICES.map(({ href, label }) => (
+              {FOOTER_SERVICES.map(({ href, label }) => (
                 <li key={label}>
                   <Link
                     href={href}

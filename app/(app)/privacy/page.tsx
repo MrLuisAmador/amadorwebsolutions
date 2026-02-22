@@ -1,3 +1,4 @@
+import { PRIVACY_LAST_UPDATED } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,8 +6,6 @@ export const metadata: Metadata = {
   description:
     "How Amador Web Solutions collects, uses, discloses, and protects your information. Data practices for our website and services.",
 };
-
-const LAST_UPDATED = "December 2026";
 
 export default function PrivacyPage() {
   return (
@@ -17,7 +16,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-3 text-base text-muted-foreground">
-            Last updated: {LAST_UPDATED}
+            Last updated: {PRIVACY_LAST_UPDATED}
           </p>
         </header>
 
