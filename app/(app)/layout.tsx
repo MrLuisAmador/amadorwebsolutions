@@ -3,6 +3,7 @@ import { Geist_Mono, Lato, Roboto_Slab } from "next/font/google";
 import "../../app/globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const lato = Lato({
   variable: "--font-lato",
@@ -34,6 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-NVSC9687" />
       <body
         className={`${lato.variable} ${geistMono.variable} ${robotoSlab.variable} antialiased font-sans`}
       >
