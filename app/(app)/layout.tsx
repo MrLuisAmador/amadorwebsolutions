@@ -4,6 +4,7 @@ import "../../app/globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 
 const lato = Lato({
   variable: "--font-lato",
@@ -42,6 +43,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
