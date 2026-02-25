@@ -16,6 +16,10 @@ export const SITE_DESCRIPTION =
 export const PHONE = "(813) 702-3172";
 export const EMAIL = "luis@amadorwebsolutions.com";
 
+// Google Business Profile (get URL from business.google.com → Share)
+export const GOOGLE_BUSINESS_PROFILE_URL =
+  "https://g.page/amadorwebsolutions";
+
 // Navigation
 export const NAV_LINKS = [
   { href: "/", label: "Home" },

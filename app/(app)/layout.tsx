@@ -5,6 +5,28 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
+import {
+  EMAIL,
+  GOOGLE_BUSINESS_PROFILE_URL,
+  PHONE,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SOCIAL_LINKS,
+} from "@/lib/constants";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_TITLE,
+  url: "https://www.amadorwebsolutions.com",
+  description: SITE_DESCRIPTION,
+  email: EMAIL,
+  telephone: PHONE,
+  sameAs: [
+    ...SOCIAL_LINKS.map((link) => link.href),
+    GOOGLE_BUSINESS_PROFILE_URL,
+  ],
+};
 
 const lato = Lato({
   variable: "--font-lato",
@@ -36,6 +58,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+      </head>
       <GoogleTagManager gtmId="GTM-NVSC9687" />
       <body
         className={`${lato.variable} ${geistMono.variable} ${robotoSlab.variable} antialiased font-sans`}
