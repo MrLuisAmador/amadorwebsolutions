@@ -7,15 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "payload:generate": "payload generate:importmap"
+    "lint": "eslint"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.6",
-    "@payloadcms/db-postgres": "^3.76.1",
-    "@payloadcms/next": "^3.76.1",
-    "@payloadcms/richtext-lexical": "^3.76.1",
-    "@payloadcms/ui": "^3.76.1",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-slot": "^1.2.4",
     "@vercel/analytics": "^1.6.1",
@@ -25,7 +20,6 @@
     "lucide-react": "^0.562.0",
     "next": "16.1.0",
     "nodemailer": "^8.0.1",
-    "payload": "^3.76.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "sharp": "^0.34.5",

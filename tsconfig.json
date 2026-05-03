@@ -19,8 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./app/*"],
-      "@payload-config": ["./payload.config"]
+      "@/*": ["./app/*"]
     }
   },
   "include": [

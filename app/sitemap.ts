@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { getBlogPosts } from "@/lib/blog";
 import { getServiceSlugs } from "@/lib/services";
 
 const SITE_URL = process.env.SITE_URL;
@@ -8,7 +7,7 @@ if (!SITE_URL) {
   throw new Error("SITE_URL is not set");
 }
 
-/** Revalidate sitemap every hour so new blog posts appear automatically */
+/** Revalidate sitemap every hour */
 export const revalidate = 3600;
 
 const STATIC_PAGES: MetadataRoute.Sitemap = [
@@ -43,12 +42,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
     priority: 0.5,
   },
   {
-    url: `${SITE_URL}/blog`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  },
-  {
     url: `${SITE_URL}/audit`,
     lastModified: new Date(),
     changeFrequency: "monthly",
@@ -57,17 +50,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getBlogPosts();
-
-  const blogPosts: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: post.publishedDate
-      ? new Date(post.publishedDate)
-      : new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
-
   const servicePages: MetadataRoute.Sitemap = getServiceSlugs().map(
     (slug) => ({
       url: `${SITE_URL}/services/${slug}`,
@@ -77,5 +59,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  return [...STATIC_PAGES, ...servicePages, ...blogPosts];
+  return [...STATIC_PAGES, ...servicePages];
 }
