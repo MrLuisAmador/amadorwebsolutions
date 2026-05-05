@@ -10,29 +10,45 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { ContactSchema } from "@/lib/schemas";
+import { z } from "zod";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState<Record<string, string[]>>({});
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
+    setErrors({});
+    
     const form = e.currentTarget;
     const fd = new FormData(form);
     const payload = Object.fromEntries(fd.entries());
+
+    const result = ContactSchema.safeParse(payload);
+    if (!result.success) {
+      setErrors(result.error.flatten().fieldErrors as Record<string, string[]>);
+      return;
+    }
+
+    setStatus("submitting");
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(result.data),
       });
       if (res.ok) {
         setStatus("success");
         form.reset();
       } else {
+        const data = await res.json();
+        if (data.details) {
+          setErrors(data.details);
+        }
         setStatus("error");
       }
     } catch {
@@ -52,9 +68,12 @@ export function ContactForm() {
           type="text"
           required
           placeholder="Full Name"
-          className={INPUT_CLASS}
+          className={cn(INPUT_CLASS, errors.fullName && "border-aws-accent")}
           disabled={status === "submitting"}
         />
+        {errors.fullName && (
+          <p className="mt-1 text-sm text-aws-accent">{errors.fullName[0]}</p>
+        )}
       </div>
 
       <div>
@@ -67,12 +86,16 @@ export function ContactForm() {
           type="email"
           required
           placeholder="Email"
-          className={INPUT_CLASS}
+          className={cn(INPUT_CLASS, errors.email && "border-aws-accent")}
           disabled={status === "submitting"}
         />
-        <p className="mt-1.5 text-base text-muted-foreground">
-          I reply within 24 hours
-        </p>
+        {errors.email ? (
+          <p className="mt-1 text-sm text-aws-accent">{errors.email[0]}</p>
+        ) : (
+          <p className="mt-1.5 text-base text-muted-foreground">
+            I reply within 24 hours
+          </p>
+        )}
       </div>
 
       <div>
@@ -85,9 +108,12 @@ export function ContactForm() {
           type="url"
           required
           placeholder="Website URL"
-          className={INPUT_CLASS}
+          className={cn(INPUT_CLASS, errors.websiteUrl && "border-aws-accent")}
           disabled={status === "submitting"}
         />
+        {errors.websiteUrl && (
+          <p className="mt-1 text-sm text-aws-accent">{errors.websiteUrl[0]}</p>
+        )}
       </div>
 
       <fieldset>
@@ -136,7 +162,11 @@ export function ContactForm() {
           id="contact-budget"
           name="budget"
           required
-          className={cn(INPUT_CLASS, "appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%236b7280%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E')] bg-size-[1.25rem] bg-position-[right_0.5rem_center] bg-no-repeat pr-10")}
+          className={cn(
+            INPUT_CLASS, 
+            errors.budget && "border-aws-accent",
+            "appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%236b7280%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E')] bg-size-[1.25rem] bg-position-[right_0.5rem_center] bg-no-repeat pr-10"
+          )}
           disabled={status === "submitting"}
         >
           {BUDGET_OPTIONS.map(({ value, label }) => (
@@ -145,6 +175,9 @@ export function ContactForm() {
             </option>
           ))}
         </select>
+        {errors.budget && (
+          <p className="mt-1 text-sm text-aws-accent">{errors.budget[0]}</p>
+        )}
       </div>
 
       <div>

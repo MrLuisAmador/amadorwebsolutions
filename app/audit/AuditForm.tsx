@@ -4,29 +4,44 @@ import { INPUT_CLASS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { AuditSchema } from "@/lib/schemas";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function AuditForm({ className }: { className?: string }) {
   const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState<Record<string, string[]>>({});
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
+    setErrors({});
+    
     const form = e.currentTarget;
     const fd = new FormData(form);
     const payload = Object.fromEntries(fd.entries());
+
+    const result = AuditSchema.safeParse(payload);
+    if (!result.success) {
+      setErrors(result.error.flatten().fieldErrors as Record<string, string[]>);
+      return;
+    }
+
+    setStatus("submitting");
 
     try {
       const res = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(result.data),
       });
       if (res.ok) {
         setStatus("success");
         form.reset();
       } else {
+        const data = await res.json();
+        if (data.details) {
+          setErrors(data.details);
+        }
         setStatus("error");
       }
     } catch {
@@ -50,9 +65,12 @@ export function AuditForm({ className }: { className?: string }) {
           type="email"
           required
           placeholder="Email"
-          className={INPUT_CLASS}
+          className={cn(INPUT_CLASS, errors.email && "border-aws-accent")}
           disabled={status === "submitting"}
         />
+        {errors.email && (
+          <p className="mt-1 text-sm text-aws-accent">{errors.email[0]}</p>
+        )}
       </div>
 
       <div>
@@ -65,9 +83,12 @@ export function AuditForm({ className }: { className?: string }) {
           type="url"
           required
           placeholder="Web URL goes here"
-          className={INPUT_CLASS}
+          className={cn(INPUT_CLASS, errors.website && "border-aws-accent")}
           disabled={status === "submitting"}
         />
+        {errors.website && (
+          <p className="mt-1 text-sm text-aws-accent">{errors.website[0]}</p>
+        )}
       </div>
 
       <div>

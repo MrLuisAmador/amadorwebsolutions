@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { AuditPayload, ContactPayload, EmailOptionsSchema, SendEmailOptions } from "./schemas";
 
 const SMTP_HOST = process.env.SMTP_HOST ?? "smtp.gmail.com";
 const SMTP_PORT = Number(process.env.SMTP_PORT) || 587;
@@ -26,19 +27,19 @@ function isEmailConfigured(): boolean {
   return Boolean(SMTP_USER && SMTP_PASS);
 }
 
-export type SendEmailOptions = {
-  to: string;
-  subject: string;
-  text: string;
-  html?: string;
-  replyTo?: string;
-};
-
-export async function sendEmail({ to, subject, text, html, replyTo }: SendEmailOptions) {
+async function sendEmail(options: SendEmailOptions) {
   if (!isEmailConfigured()) {
     console.warn("Email not configured: SMTP_USER and SMTP_PASS required");
     return { sent: false, reason: "not_configured" };
   }
+
+  const result = EmailOptionsSchema.safeParse(options);
+  if (!result.success) {
+    console.error("Internal email validation failed:", result.error.format());
+    return { sent: false, reason: "invalid_options" };
+  }
+
+  const { to, subject, text, html, replyTo } = result.data;
 
   const transporter = getTransporter();
   await transporter.sendMail({
@@ -53,16 +54,7 @@ export async function sendEmail({ to, subject, text, html, replyTo }: SendEmailO
   return { sent: true };
 }
 
-export async function sendContactNotification(payload: {
-  fullName: string;
-  email: string;
-  websiteUrl: string;
-  helpWith?: string;
-  goal?: string;
-  budget: string;
-  startWhen?: string;
-  additionalDetails?: string;
-}) {
+export async function sendContactNotification(payload: ContactPayload) {
   const recipient = NOTIFICATION_EMAIL;
   if (!recipient) {
     console.warn("NOTIFICATION_EMAIL not set");
@@ -93,13 +85,7 @@ export async function sendContactNotification(payload: {
   });
 }
 
-export async function sendAuditNotification(payload: {
-  email: string;
-  website: string;
-  business?: string;
-  fullName?: string;
-  phone?: string;
-}) {
+export async function sendAuditNotification(payload: AuditPayload) {
   const recipient = NOTIFICATION_EMAIL;
   if (!recipient) {
     console.warn("NOTIFICATION_EMAIL not set");

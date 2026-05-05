@@ -1,30 +1,28 @@
 import { NextResponse } from "next/server";
 import { sendAuditNotification } from "@/lib/email";
-
-export type AuditPayload = {
-  email: string;
-  website: string;
-  business?: string;
-  fullName?: string;
-  phone?: string;
-};
+import { AuditSchema } from "@/lib/schemas";
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as AuditPayload;
-    const { email, website } = body;
+    const json = await request.json();
+    const result = AuditSchema.safeParse(json);
 
-    if (!email?.trim() || !website?.trim()) {
+    if (!result.success) {
       return NextResponse.json(
-        { error: "Email and website are required" },
+        { 
+          error: "Validation failed", 
+          details: result.error.flatten().fieldErrors 
+        },
         { status: 400 }
       );
     }
 
+    const body = result.data;
+
     try {
-      const result = await sendAuditNotification(body);
-      if (!result.sent) {
-        console.error("Audit email failed:", result.reason);
+      const emailResult = await sendAuditNotification(body);
+      if (!emailResult.sent) {
+        console.error("Audit email failed:", emailResult.reason);
         return NextResponse.json(
           { error: "Could not submit request. Please try again later." },
           { status: 503 }
@@ -38,7 +36,8 @@ export async function POST(request: Request) {
       );
     }
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("Audit API error:", error);
     return NextResponse.json(
       { error: "Invalid request" },
       { status: 400 }

@@ -1,33 +1,28 @@
 import { NextResponse } from "next/server";
 import { sendContactNotification } from "@/lib/email";
-
-export type ContactPayload = {
-  fullName: string;
-  email: string;
-  websiteUrl: string;
-  helpWith?: string;
-  goal?: string;
-  budget: string;
-  startWhen?: string;
-  additionalDetails?: string;
-};
+import { ContactSchema } from "@/lib/schemas";
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as ContactPayload;
-    const { fullName, email, websiteUrl, budget } = body;
+    const json = await request.json();
+    const result = ContactSchema.safeParse(json);
 
-    if (!fullName?.trim() || !email?.trim() || !websiteUrl?.trim() || !budget?.trim()) {
+    if (!result.success) {
       return NextResponse.json(
-        { error: "Full name, email, website URL, and budget are required" },
+        { 
+          error: "Validation failed", 
+          details: result.error.flatten().fieldErrors 
+        },
         { status: 400 }
       );
     }
 
+    const body = result.data;
+
     try {
-      const result = await sendContactNotification(body);
-      if (!result.sent) {
-        console.error("Contact email failed:", result.reason);
+      const emailResult = await sendContactNotification(body);
+      if (!emailResult.sent) {
+        console.error("Contact email failed:", emailResult.reason);
         return NextResponse.json(
           { error: "Could not send message. Please try again later." },
           { status: 503 }
@@ -41,7 +36,8 @@ export async function POST(request: Request) {
       );
     }
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("Contact API error:", error);
     return NextResponse.json(
       { error: "Invalid request" },
       { status: 400 }
